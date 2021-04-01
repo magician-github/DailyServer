@@ -4,6 +4,7 @@ const resHelper = require('../utils').resHelper;
 let jwt = require('jsonwebtoken');
 let secretkey = 'secretkey'
 const queryDao = require('..//dao/queryDao');
+const writeDao = require('../dao/writeDao')
 const regDao = require('../dao/regDao');
 // 登录
 function login (req, res) {
@@ -58,6 +59,16 @@ function reg(req,res,next){
             console.log('err',err);
             console.log('resp',resp);
             if(!err){
+                writeDao.IwriteMyInfo({
+                    id:resp.insertId,
+                    callback:(err1,resp1)=>{
+                        console.log('err1',err1)
+                        if(!err1){
+                            console.log(resp1)
+                        }
+
+                    }
+                })
                 res.status(200);
                 res.write(resHelper(200,'注册成功',null))
             } else {

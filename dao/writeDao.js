@@ -11,8 +11,8 @@ function IwriteEveryDay(params){
     excuteSql(sql,[],params.callback);
 }
 function IwriteMyInfo(params){
-    const {name,age,sex,tel,email,hobby,address,birth,uid} = params;
-    const sql = `insert into myinfo(name,age,sex,tel,email,hobby,address,birth,uid) values('${name}',${age},'${sex}','${tel}','${sex}','${hobby}','${address}','${birth}',${uid})`;
+    // const {name,age,sex,tel,email,hobby,address,birth,uid} = params;
+    const sql = `insert into myinfo(uid) values(${params.id});`;
     excuteSql(sql,[],params.callback);
 }
 

@@ -27,6 +27,7 @@ function queryDaily(req, res, next) {
   const pagination = req.query.pagination;
   // console.log(req.query,'req')
   queryDao.IqueryDaily({
+    id:req.id,
     pagination:pagination,
     callback:(err,resp)=>{
       if(!err){
@@ -44,6 +45,7 @@ function queryDaily(req, res, next) {
 }
 function queryDailyCount(req, res, next) {
   queryDao.IqueryDailyCount({
+    id:req.id,
     callback:(err,resp)=>{
       if(!err){
         res.status(200);
@@ -60,6 +62,7 @@ function queryDailyCount(req, res, next) {
 }
 function queryEveryDay(req, res, next) {
   queryDao.IqueryEveryDay({
+    id:req.id,
     callback: (err,resp)=>{
       if(!err){
         res.status(200);
@@ -76,6 +79,7 @@ function queryEveryDay(req, res, next) {
 }
 function queryWork(req, res, next) {
   queryDao.IqueryWork({
+    id:req.id,
     callback: (err,resp)=>{
       if(!err){
         res.status(200);
@@ -91,7 +95,6 @@ function queryWork(req, res, next) {
   })
 }
 function queryMyInfo(req, res, next) {
-  console.log('id is',req.id)
   queryDao.IqueryMyInfo({
     id:req.id,
     callback: (err,resp)=>{
@@ -110,7 +113,7 @@ function queryMyInfo(req, res, next) {
 }
 function queryUsers(req, res, next) {
   queryDao.IqueryUsers({
-    id:parseInt(req.id),
+    id:req.id,
     callback: (err,resp)=>{
       if(!err){
         res.status(200);
@@ -125,6 +128,23 @@ function queryUsers(req, res, next) {
     }
   })
 }
+// function queryMyinfo(req, res, next) {
+//   queryDao.IqueryUsers({
+//     id:req.id,
+//     callback: (err,resp)=>{
+//       if(!err){
+//         res.status(200);
+//         res.write(resHelper(200, "success", resp));
+//         res.end()
+//       } else {
+//         res.status(500);
+//         res.write(resHelper(500, "fail", resp));
+//         res.end()
+//       }
+    
+//     }
+//   })
+// }
 module.exports = {
   queryDaily,
   queryEveryDay,

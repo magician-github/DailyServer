@@ -41,7 +41,7 @@ app.get("/api/loginOut",(req,res,next)=>{
       maxAge: 600 * 8000,
       path: "/",
     });
-  curUser.username = ''
+  curUser.username = '' 
   curUser.id = -1        
   curUser.password = ''
   res.json({msg:"退出成功",code:200})
@@ -52,7 +52,7 @@ app.use((req,res,next) => {
         //token可能存在post请求和get请求
         let token = req.cookies.token||req.body.authorization || req.query.authorization || req.headers.authorization;
         jwt.verify(token,secretkey,function(err,decode){
-           if(err){     
+           if(err){             
                res.json({
                    message: 'token过期，请重新登录',
                    resultCode: '403'

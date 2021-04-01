@@ -14,8 +14,7 @@ function IupdateEveryDay(params){
 }
 function IupdateMyInfo(params){
    const {id,age,hobby,birth,address,email,tel,name,sex,callback} = params;
-   console.log('email',email)
-   const sql = `update myinfo set age = '${age}',hobby = '${hobby}',birth='${birth}',address='${address}',email='${email}',sex='${sex}',tel='${tel}',name='${name}' where id = ${id}`;
+   const sql = `update myinfo set age = '${age}',hobby = '${hobby}',birth='${birth}',address='${address}',email='${email}',sex='${sex}',tel='${tel}',name='${name}' where uid = ${id}`;
    excuteSql(sql,[],callback);
 }
 function IupdateWork(params){
