@@ -39,7 +39,6 @@ uploadRouter.post("/", upload.single("avatar_url"), (req, res) => {
     id: req.id,
     url: url,
     callback: (err, resp) => {
-      console.log("err resp", err, resp);
       res.send({
         code: 0,
         msg: "",

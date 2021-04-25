@@ -20,6 +20,13 @@ function IupdateMyInfo(params){
 function IupdateWork(params){
    const {id,time,title,status,callback} = params;
    const sql = `update work set time = '${time}',title = '${title}',status='${status}' where id = ${id}`;
+   console.log('sql',sql);
+   excuteSql(sql,[],callback);
+   
+}
+function IupdatePwd(params){
+   const {id,oldPwd,newPwd,callback} = params;
+   const sql = `update users set password = '${newPwd}' where id = ${id}`;
    excuteSql(sql,[],callback);
    
 }
@@ -27,5 +34,6 @@ module.exports = {
    IupdateDaily,
    IupdateEveryDay,
    IupdateMyInfo,
-   IupdateWork
+   IupdateWork,
+   IupdatePwd
 }

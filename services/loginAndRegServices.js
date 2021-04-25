@@ -56,8 +56,6 @@ function reg(req,res,next){
         username,
         password,
         callback:function(err,resp){
-            console.log('err',err);
-            console.log('resp',resp);
             if(!err){
                 writeDao.IwriteMyInfo({
                     id:resp.insertId,

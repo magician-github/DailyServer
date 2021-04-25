@@ -62,14 +62,14 @@ app.use((req,res,next) => {
                next();
            }
         })
-    }else{
-        next();
+    }else{ 
+        next(); 
     }
   })
 
 //处理请求的router
 app.use('/api/loginAndReg', loginAndRegRouter);
-app.use('/api/query',queryRouter);
+app.use('/api/query',queryRouter);  
 app.use('/api/write',writeRouter);
 app.use('/api/update',updateRouter);
 app.use('/api/delete',delRouter);

@@ -71,6 +71,8 @@ function updateMyInfo(req,res,next){
 }
 function updateWork(req,res,next){
    const params = req.body;
+   console.log('修改时间',params.time);
+
    updateDao.IupdateWork({
       id:params.id,
       title:params.title || '无标题',
@@ -89,9 +91,33 @@ function updateWork(req,res,next){
       }
    });
 }
+function updatePwd(req,res,next){
+   const params = req.body;
+
+   updateDao.IupdatePwd({
+      id:params.id,
+      oldPwd:params.oldPwd,
+      newPwd:params.newPwd,
+      callback:function (err, resp){
+         if(!err){
+            res.status(200);
+            res.json({
+               code:200,
+               msg:'修改成功'
+            })
+            res.end();
+         } else {
+            res.status(500);
+            res.write(resHelper(200,'修改失败，请验证字段',null));
+            res.end();
+         }
+      }
+   });
+}
 module.exports = {
    updateDaily,
    updateEveryDay,
    updateMyInfo,
-   updateWork
+   updateWork,
+   updatePwd
 }
